@@ -47,7 +47,7 @@
 
     p {
         text-transform: uppercase;
-        color: var(--black-color);
+        color: var(--teal-color);
     }
 }
 
@@ -55,7 +55,7 @@
     font-size: 2.75rem;
     font-weight: 800;
     text-align: center;
-    color: var(--black-color);
+    color: var(--teal-color);
     text-transform: capitalize;
 
     span {
@@ -85,7 +85,7 @@
 .bold-text {
     font-size: 1rem;
     font-weight: 800;
-    color: var(--black-color);
+    color: var(--teal-color);
     text-align: left;
 
     @media screen and (min-width: 2000px) {
