@@ -7,4 +7,5 @@ export { default as Work } from "./Work/Work";
 export { default as Author } from "./Blog/Author"
 export { default as Category } from "./Blog/Category"
 export { default as Post } from "./Blog/Post"
+export { default as Blog } from "./Blog/Blog"
 
