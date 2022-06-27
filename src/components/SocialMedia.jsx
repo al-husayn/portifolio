@@ -15,21 +15,21 @@ const SocialMedia = () => (
             </a>
         </div>
 
-        <div>
+        {/* <div>
             <a href='https://www.instagram.com/al_drake3/'>
                 <BsInstagram />
             </a>
-        </div>
+        </div> */}
         <div>
             <a href='https://www.youtube.com/channel/UCc19yVrMKZ9tCy40hWEc3BA'>
                 <FaYoutube />
             </a>
         </div>
-        <div>
+        {/* <div>
             <a href='https://www.facebook.com/kelson.keen'>
                 <FaFacebookF />
             </a>
-        </div>
+        </div> */}
     </div>
 );
 
