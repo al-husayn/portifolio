@@ -1,6 +1,6 @@
 import React from 'react';
-import { BsTwitter, BsInstagram, BsGithub } from 'react-icons/bs';
-import { FaFacebookF, FaYoutube } from 'react-icons/fa';
+import { BsTwitter, BsGithub } from 'react-icons/bs';
+import { FaYoutube } from 'react-icons/fa';
 
 const SocialMedia = () => (
     <div className="app__social">
