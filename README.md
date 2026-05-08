@@ -1,70 +1,100 @@
-# Getting Started with Create React App
+# Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React portfolio website powered by Vite and Sanity. The frontend displays profile, about, work, skills, testimonials, and contact sections, while the `backend_sanity` folder contains the Sanity Studio used to manage portfolio content.
+
+## Tech Stack
+
+- React 19
+- Vite 7
+- Sass
+- Framer Motion
+- Sanity CMS
+
+## Project Structure
+
+```text
+.
+|-- backend_sanity/   # Sanity Studio schemas and CMS configuration
+|-- public/           # Static public assets
+|-- src/
+|   |-- assets/       # Images and icons
+|   |-- components/   # Shared UI components
+|   |-- container/    # Page sections
+|   |-- constants/    # Shared constants and image exports
+|   |-- wrapper/      # Higher-order layout/motion wrappers
+|   |-- App.jsx
+|   `-- client.js     # Sanity client configuration
+|-- index.html
+|-- package.json
+`-- vite.config.js
+```
+
+## Getting Started
+
+Install dependencies:
+
+```bash
+yarn
+```
+
+Create a `.env` file in the project root:
+
+```env
+REACT_APP_SANITY_PROJECT_ID=your_sanity_project_id
+REACT_APP_SANITY_TOKEN=your_sanity_token
+```
+
+Start the frontend:
+
+```bash
+yarn dev
+```
+
+The app runs at [http://localhost:3000](http://localhost:3000).
 
 ## Available Scripts
 
-In the project directory, you can run:
+```bash
+yarn dev
+```
 
-### `npm start`
+Starts the Vite development server.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+yarn build
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Builds the production app into the `build` directory.
 
-### `npm test`
+```bash
+yarn serve
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Previews the production build locally.
 
-### `npm run build`
+```bash
+yarn test
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Runs the configured Vite test command.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Sanity Studio
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The CMS is in `backend_sanity`.
 
-### `npm run eject`
+```bash
+cd backend_sanity
+yarn
+yarn start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Sanity schemas are defined in `backend_sanity/schemas`.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Environment Variables
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The frontend expects these root-level variables:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- `REACT_APP_SANITY_PROJECT_ID`: Sanity project ID.
+- `REACT_APP_SANITY_TOKEN`: Sanity token used by the client.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Keep `.env` out of version control.
