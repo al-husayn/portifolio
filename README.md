@@ -1,6 +1,6 @@
 # Portfolio
 
-A React portfolio website powered by Vite and Sanity. The frontend displays profile, about, work, skills, testimonials, and contact sections, while the `backend_sanity` folder contains the Sanity Studio used to manage portfolio content.
+A React portfolio Dev website powered by Vite and Sanity. The frontend displays profile, about, work, skills, testimonials, and contact sections, while the `backend_sanity` folder contains the Sanity Studio used to manage portfolio content. This project was originally build with CRA(Create React App) but later migrated to Vite
 
 ## Tech Stack
 
