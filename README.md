@@ -96,3 +96,5 @@ The frontend expects these root-level variables:
 - `VITE_SANITY_PROJECT_ID`: Public Sanity project ID used by the browser client.
 
 The browser client uses read-only public access. Keep any Sanity write token in a server-side environment; Vite exposes `VITE_*` values to client code. Keep `.env` out of version control.
+
+Contact form submissions require a server-side API endpoint or cloud function. That endpoint must validate the submitted fields and create the Sanity `contact` document using a write token stored only in the server environment. Do not add a Sanity write token to a `VITE_*` variable or browser code. The current static frontend does not include this endpoint, so until one is configured the form will direct visitors to contact you by email.

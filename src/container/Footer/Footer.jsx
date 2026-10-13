@@ -9,31 +9,43 @@ const Footer = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const { username, email, message } = formData;
+  const { name, email, message } = formData;
 
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((currentFormData) => ({ ...currentFormData, [name]: value }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (loading) return;
+
     setLoading(true);
+    setError("");
 
     const contact = {
       _type: "contact",
-      name: formData.username,
-      email: formData.email,
-      message: formData.message,
+      name: name.trim(),
+      email: email.trim(),
+      message: message.trim(),
     };
 
-    client
-      .create(contact)
-      .then(() => {
-        setLoading(false);
-        setIsFormSubmitted(true);
-      })
-      .catch((err) => console.log(err));
+    try {
+      await client.create(contact);
+      setIsFormSubmitted(true);
+    } catch (submissionError) {
+      if (submissionError.statusCode === 403) {
+        setError(
+          "Message delivery is not configured yet. Please email me directly using the address above.",
+        );
+      } else {
+        setError("Your message could not be sent. Please try again.");
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -55,15 +67,17 @@ const Footer = () => {
         </div>
       </div>
       {!isFormSubmitted ? (
-        <div className="app__footer-form app__flex">
+        <form className="app__footer-form app__flex" onSubmit={handleSubmit}>
           <div className="app__flex">
             <input
               className="p-text"
               type="text"
               placeholder="Your Name"
-              name="username"
-              value={username}
+              name="name"
+              value={name}
               onChange={handleChangeInput}
+              autoComplete="name"
+              required
             />
           </div>
           <div className="app__flex">
@@ -74,6 +88,8 @@ const Footer = () => {
               name="email"
               value={email}
               onChange={handleChangeInput}
+              autoComplete="email"
+              required
             />
           </div>
           <div>
@@ -83,12 +99,14 @@ const Footer = () => {
               value={message}
               name="message"
               onChange={handleChangeInput}
+              required
             />
           </div>
-          <button type="button" className="p-text" onClick={handleSubmit}>
-            {!loading ? "Send Message" : "Sending..."}
+          {error && <p className="app__footer-form-error" role="alert">{error}</p>}
+          <button type="submit" className="p-text" disabled={loading}>
+            {loading ? "Sending..." : "Send Message"}
           </button>
-        </div>
+        </form>
       ) : (
         <div>
           <h3 className="head-text">Thank you for getting in touch!</h3>
