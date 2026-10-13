@@ -102,7 +102,11 @@ const Footer = () => {
               required
             />
           </div>
-          {error && <p className="app__footer-form-error" role="alert">{error}</p>}
+          {error && (
+            <p className="app__footer-form-error" role="alert">
+              {error}
+            </p>
+          )}
           <button type="submit" className="p-text" disabled={loading}>
             {loading ? "Sending..." : "Send Message"}
           </button>
