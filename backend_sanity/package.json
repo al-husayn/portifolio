@@ -1,18 +1,18 @@
 {
   "name": "portfolio",
-  "private": true,
   "version": "1.0.0",
+  "private": true,
   "description": "",
-  "main": "package.json",
-  "author": "AL Drake <atldrake532@gmail.com>",
+  "keywords": [
+    "sanity"
+  ],
   "license": "UNLICENSED",
+  "author": "AL Drake <atldrake532@gmail.com>",
+  "main": "package.json",
   "scripts": {
     "start": "sanity start",
     "build": "sanity build"
   },
-  "keywords": [
-    "sanity"
-  ],
   "dependencies": {
     "@sanity/base": "^2.30.1",
     "@sanity/core": "^2.30.2",

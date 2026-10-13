@@ -12,7 +12,7 @@ export { default as bright } from './bright';
 export { default as chalk } from './chalk';
 export { default as codeschool } from './codeschool';
 export { default as colors } from './colors';
-export { default as default } from './default';
+export { default } from './default';
 export { default as eighties } from './eighties';
 export { default as embers } from './embers';
 export { default as flat } from './flat';
