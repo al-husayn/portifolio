@@ -1,7 +1,7 @@
 import { resolve } from "node:path";
 import { readFileSync } from "node:fs";
 import { defineConfig, loadEnv, createFilter, transformWithEsbuild } from "vite-plus";
-import react from "@vitejs/plugin-react";
+import react from "@vitejs/plugin-react-swc";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   setEnv(mode);
@@ -30,8 +30,7 @@ function setEnv(mode) {
   process.env.NODE_ENV ||= mode;
   const { homepage } = JSON.parse(readFileSync("package.json", "utf-8"));
   process.env.PUBLIC_URL ||= homepage
-    ? `${
-        homepage.startsWith("http") || homepage.startsWith("/") ? homepage : `/${homepage}`
+    ? `${homepage.startsWith("http") || homepage.startsWith("/") ? homepage : `/${homepage}`
       }`.replace(/\/$/, "")
     : "";
 }
@@ -76,11 +75,11 @@ function devServerPlugin() {
           ...(https &&
             SSL_CRT_FILE &&
             SSL_KEY_FILE && {
-              https: {
-                cert: readFileSync(resolve(SSL_CRT_FILE)),
-                key: readFileSync(resolve(SSL_KEY_FILE)),
-              },
-            }),
+            https: {
+              cert: readFileSync(resolve(SSL_CRT_FILE)),
+              key: readFileSync(resolve(SSL_KEY_FILE)),
+            },
+          }),
         },
       };
     },
