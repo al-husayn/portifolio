@@ -2,6 +2,13 @@
   "name": "frontend_react",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "vp dev",
+    "build": "vp build",
+    "test": "vp test",
+    "serve": "vp preview",
+    "dev": "vp dev"
+  },
   "dependencies": {
     "@sanity/client": "^3.3.2",
     "@sanity/image-url": "^1.0.1",
@@ -16,36 +23,13 @@
     "react-tooltip": "^4.2.21",
     "web-vitals": "^2.1.4"
   },
-  "scripts": {
-    "start": "vite",
-    "build": "vite build",
-    "test": "vite test",
-    "serve": "vite preview",
-    "dev": "vite"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "devDependencies": {
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
-    "@vitejs/plugin-react": "^4.6.0",
+    "@vitejs/plugin-react": "^6.1.2",
     "sass-embedded": "^1.89.2",
-    "vite": "^7.0.0"
-  }
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  },
+  "packageManager": "pnpm@12.11.2"
 }

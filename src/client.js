@@ -1,13 +1,29 @@
-import sanityClient from '@sanity/client';
-import imageUrlBuilder from '@sanity/image-url';
+import sanityClient from "@sanity/client";
+import imageUrlBuilder from "@sanity/image-url";
 
 export const client = sanityClient({
-    projectId: process.env.REACT_APP_SANITY_PROJECT_ID,
-    dataset: 'production',
-    apiVersion: '2022-02-01',
-    useCdn: true,
-    token: process.env.REACT_APP_SANITY_TOKEN,
+  projectId: import.meta.env.VITE_SANITY_PROJECT_ID,
+  dataset: "production",
+  apiVersion: "2022-02-01",
+  useCdn: true,
 });
+
+// Contact writes must go through a server endpoint that owns the Sanity token.
+client.create = async (contact) => {
+  const response = await fetch("/api/contacts", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(contact),
+  });
+
+  if (!response.ok) {
+    const error = new Error("Failed to submit contact");
+    error.statusCode = response.status;
+    throw error;
+  }
+
+  return response.json();
+};
 
 const builder = imageUrlBuilder(client);
 
