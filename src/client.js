@@ -17,7 +17,9 @@ client.create = async (contact) => {
   });
 
   if (!response.ok) {
-    throw new Error("Failed to submit contact");
+    const error = new Error("Failed to submit contact");
+    error.statusCode = response.status;
+    throw error;
   }
 
   return response.json();
